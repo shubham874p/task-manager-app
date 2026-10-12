@@ -51,6 +51,17 @@ public class TaskManager {
     public List<Task> listTasks() {
         return new ArrayList<>(tasks);
     }
+    public List<Task> searchTasks(String keyword) {
+    List<Task> result = new ArrayList<>();
+    if (keyword == null) return result;
+    String k = keyword.trim().toLowerCase();
+    for (Task t : tasks) {
+        if (t.getTitle().toLowerCase().contains(k)) {
+            result.add(t);
+        }
+    }
+    return result;
+}
 
     public static void main(String[] args) {
         TaskManager manager = new TaskManager();
